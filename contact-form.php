@@ -1,3 +1,12 @@
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        echo 'test post';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,23 +42,28 @@
     <link rel="stylesheet" href="form-style.css">
 </head>
 
-<body class="form-container flex items-center justify-center lg:px-20">
+<body class="form-container flex flex-col items-center justify-center lg:px-20">
     <main
-        class="bg-blue-50 drop-shadow-lg text-gray-600 grid md:grid-cols-5 md:gap-12 lg:gap-24 px-10 lg:px-20 py-12 rounded-3xl">
+        class="bg-blue-50 drop-shadow-lg text-gray-600 grid md:grid-cols-5 md:gap-12 lg:gap-24 px-10 lg:px-20 py-12 mb-6 rounded-3xl">
+
+        <!-- message box -->
         <div class="block md:col-span-3 mb-10 md:mb-0">
-            <h1 class="text-5xl text-blue-600 font-bold mb-6">Let's talk!</h1>
-            <form action="">
+            <h1 class="text-5xl text-blue-600 font-bold mb-6">Send us a message!</h1>
+            <form action="add-contact.php" method="post">
                 <label for="name" class="text-xl">Name</label><br>
-                <input type="text" name="name" id="" class="bg-slate-300 w-full mt-2 mb-4 rounded-3xl border-0"><br>
+                <input type="text" name="name" id="name" class="bg-slate-300 w-full mt-2 mb-4 rounded-3xl border-0"><br>
                 <label for="email" class="text-xl">Email</label><br>
-                <input type="email" name="email" id="" class="bg-slate-300 w-full mt-2 mb-4 rounded-3xl border-0"><br>
+                <input type="email" name="email" id="email"
+                    class="bg-slate-300 w-full mt-2 mb-4 rounded-3xl border-0"><br>
                 <label for="message" class="text-xl">Message</label><br>
-                <textarea name="message" id="" cols="30" rows="5"
+                <textarea name="message" id="message" cols="30" rows="5"
                     class="bg-slate-300 w-full mt-2 mb-6 rounded-3xl border-0"></textarea>
                 <button type="submit" class="bg-blue-500 hover:bg-orange-400 text-white px-12 py-2 rounded-3xl">Send
                     Message</button>
             </form>
         </div>
+
+        <!-- extra links -->
         <div class="block md:col-span-2">
             <img src="./images/3d-illustration-classic-mailbox_643303-26-removebg.png" alt="" class="w-80">
             <a href="mailto:lamisaferdous19@gmail.com" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
@@ -60,7 +74,7 @@
                 </svg>
                 lamisaferdous19@gmail.com
             </a>
-            <a href="" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
+            <a href="https://www.linkedin.com/in/lamisa-ferdous-ritu/" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                     class="w-4 mr-2"><!-- Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
@@ -68,7 +82,7 @@
                 </svg>
                 Linkedin
             </a>
-            <a href="" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
+            <a href="https://github.com/lamisaRitu19" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"
                     class="w-4 mr-2"><!--Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
@@ -76,7 +90,7 @@
                 </svg>
                 GitHub
             </a>
-            <a href="" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1">
+            <a href="https://www.facebook.com/lamisa.ritu19" class="flex font-bold text-blue-500 hover:text-orange-400 mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                     class="w-4 mr-2"><!-- Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
@@ -84,6 +98,10 @@
                 </svg>
                 </svg>
                 Facebook
+            </a>
+            <a href="http://localhost/Assignment2/admin-login.php" class="flex font-bold text-blue-500 hover:text-orange-400 mb-1 text-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 mr-2"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                Login
             </a>
         </div>
     </main>
